@@ -1,0 +1,53 @@
+body{
+    margin: 0;
+}
+.chat-funcional{
+    width: 100%;
+    margin: 0px 0px;
+    padding-bottom: 10px;
+    background-image:url('/back.jpg');
+}
+.chat-name {
+    border: none;
+    border-radius: 4px;
+    width: 200px;
+    margin: 10px 10px;
+    outline: none;
+    
+    
+}
+.chat-message {
+    margin: 0px 10px;
+    border-radius: 4px;
+    height: 450px;
+    padding: 20px;
+    margin: 0 15px;
+    overflow-y: auto;
+    background-image: url('/tras.jpg');
+    background-size: 100%;
+    overflow-x: hidden;
+}
+.chat-message audio{
+    width: 200px;
+}
+.chat-message span{
+    display: block;
+    font-size: 12pt;
+    font-family: monospace;
+    width: 70%;
+    margin: 0;
+    background: white;
+    box-shadow: 3px 3px 10px black;
+    border-radius: 4px;
+    padding:0px 10px
+    
+}
+.chat-input {
+    width: 300px;
+    display: block;
+    margin: 20px auto;
+    border: none;
+    border-radius: 4px;
+    padding: 5px;
+    outline: none;
+}

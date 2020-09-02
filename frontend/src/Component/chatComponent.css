@@ -1,0 +1,52 @@
+.cria-sala{
+        padding: 20px;
+        margin: 30px auto;
+        width: 80%;
+        box-shadow: 3px 3px 10px black;
+        background: linear-gradient( rgba(253, 0, 0, 0.24),red);
+        text-align: center;
+        border-radius: 4px;
+        font-family: 'Courier New', Courier, monospace;
+
+}
+.cria-sala button{
+    margin: 10px auto;
+    display: block;
+    border:none;
+    background: linear-gradient(white,rgb(204, 91, 91));
+    border-radius: 4px;
+}
+.cria-sala input{
+    margin: 0 auto;
+    display: block;
+    width: 80%;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    padding: 5px;
+    
+}
+.cria-sala input:focus{
+    box-shadow: 3px 3px 10px red;
+    
+}
+
+.chat-centro{
+    margin: 30px auto;
+    width: 100%;
+    padding:20px 0px;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 3px 3px 10px black;
+    border-radius: 4px;
+    color: white;
+    background: linear-gradient(rgb(57, 192, 152), rgb(0, 255, 191));
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.chat-centro a{
+    text-decoration: none;
+    color: blue;
+    font-weight: bold;
+}
