@@ -30,25 +30,14 @@ body{
     padding: 20px;
     margin: 0 15px;
     overflow-y: auto;
-    background-image: url('/tras.jpg');
+    background: linear-gradient(rgb(209, 209, 209), white);
     background-size: 100%;
     overflow-x: hidden;
 }
 .chat-message audio{
     width: 200px;
 }
-.chat-message span{
-    display: block;
-    font-size: 12pt;
-    font-family: monospace;
-    width: 70%;
-    margin: 7px 0;
-    background: white;
-    box-shadow: 3px 3px 10px black;
-    border-radius: 4px;
-    padding:10px 10px
-    
-}
+
 .chat-input {
     width: 300px;
     display: block;
@@ -57,4 +46,34 @@ body{
     border-radius: 4px;
     padding: 5px;
     outline: none;
+}
+
+.div-chat-central{
+    text-align: right;
+    margin: 3px 3px;
+}
+.div-chat-central-2{
+    margin: 2px 0px 0px 0px;
+}
+.span-meu{
+    text-align: left;
+    display: inline-block;
+    max-width: 70%;
+    border-radius: 4px;
+    padding: 5px 10px;
+    background-color: white;
+
+    
+}
+.span-enterExit{
+    display: block;
+    margin: 0px auto;
+
+}
+.meu{
+    background-color: #dcf8c6;;
+}
+
+.cliente{
+    margin-top: 3px;
 }
