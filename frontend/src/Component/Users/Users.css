@@ -1,43 +1,33 @@
-body{
-    margin: 0;
-}
-.chat-funcional{
+
+.users-funcional{
     width: 100%;
     margin: 0px 0px;
     padding-bottom: 10px;
     background-image:url('/back.jpg');
 }
-.chat-funcional button{
-    margin: 5px 10px;
+.users-funcional button{
+    margin: 10px 10px;
     border:none;
     border-radius: 4px;
     background: linear-gradient(rgb(50, 252, 50),rgb(14, 150, 43));
     color: white;
 }
-.chat-name {
-    border: none;
-    border-radius: 4px;
-    width: 100px;
-    margin: 10px 10px;
-    outline: none;
-    
-    
-}
-.chat-message {
+
+.users-message {
     margin: 0px 10px;
     border-radius: 4px;
-    height: 450px;
+    height: 500px;
     padding: 20px;
-    margin: 0 15px;
+    margin: 0 15px 20px 15px;
     overflow-y: auto;
-    background-image: url('/tras.jpg');
+    background:linear-gradient(rgb(201, 197, 197), gray);
     background-size: 100%;
     overflow-x: hidden;
 }
-.chat-message audio{
+.users-message audio{
     width: 200px;
 }
-.chat-message span{
+.users-message span{
     display: block;
     font-size: 12pt;
     font-family: monospace;
@@ -49,7 +39,7 @@ body{
     padding:10px 10px
     
 }
-.chat-input {
+.users-input {
     width: 300px;
     display: block;
     margin: 20px auto;

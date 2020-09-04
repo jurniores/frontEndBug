@@ -1,23 +1,24 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState } from 'react';
 import {useParams} from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-
+import { useSelector } from 'react-redux';
 import './chatFunctional.css';
 
+import ChatComponent from '../componentDochat/componentdoChat';
+import Users from '../Users/Users';
 
-const cor = (Math.floor(Math.random()*250))
-const cor2 = (Math.floor(Math.random()*250))
+const Cont = Math.floor(Math.random()*99)
 
 function Chat (){
-    const dispatch = useDispatch()
-    const {socket, room} = useSelector(state=>state)
+
+    const [users, setUsers] =useState([])
+    const {socket, valida} = useSelector(state=>state)
     const [value, setValue] = useState('')
     const [name, setName] = useState('')
-    const [validate, setValidate]= useState(true)
-
+    const [ messages, setMessages ] = useState([])
+    
     
     const { id } = useParams()
-    var div = useRef()
+ 
     
     function onChangeValue(e){
 
@@ -28,92 +29,67 @@ function Chat (){
         setName(e.target.value)   
     
     }
+   
     function Envia (e){
+        
         if(e.keyCode === 13) {
+            if(name.length<3)return alert('Voce precisa digitar um nome')
             setValue('')
-           
-            div.current = document.querySelector('.chat-message')
-            
-            div.current.innerHTML += `<span style="color:rgb(70, ${cor2}, ${cor}); text-align: left;"><i><u><b>Você</b></u></i><br> ${value}</span><br>`
-            div.current.scrollTo(0,3000)
-            socket.emit('enviaMsg', {value, name, cor, cor2 })
+            if(value.length===0) return
+            socket.emit('enviaMsg', {value, name:(name+Cont)})
             
         }
     }
-    function Disconect (){
-        socket.emit('leave')
-        
-
-    }
-    function conected (){
-        socket.emit('join', id)
-         
-
-    }
     
     useEffect(()=>{
-        setValidate(true)
-        console.log(id, room)
-        if(id === room) return
-        dispatch({type: 'ADD_ROOM', data: id})
-        socket.emit('join', id)
-        socket.on('entrou', (msg)=>{
+        socket.once('UsersLogado', msg=>setUsers(msg))
+        return () => {
+            socket.off('UsersLogado');
+          };
+    },[socket,users,messages])
+    
+    useEffect(()=>{
+        socket.once('msgChegou', msg=>setMessages([...messages, msg]))
+        socket.once('EntrouSaiu', (msg)=>{
             
-            div.current = document.querySelector('.chat-message')
-            div.current.innerHTML += `<span style="color:red; margin:0px auto; text-align: center;">${msg}</span><br>`
-        })
+           return setMessages([...messages, {...msg, enterOrExit: true}])
+        }
+            )
+            
+       
+       
+        return () => {
+            socket.off('msgChegou');
+            socket.off('EntrouSaiu');
+          };
         
-        socket.on('saiu', (msg)=>{
-            div.current = document.querySelector('.chat-message')
-            div.current.innerHTML += `<span style="color:red; margin:0px auto; text-align: center;">${msg}</span><br>`
-        })
+          
 
         
-        socket.on('msgChegou', (msg)=>{
-            /*setNewValue([...newValue,{
-                name:msg.name,
-                value: msg.value
-            }])*/
-            div.current = document.querySelector('.chat-message')
-            div.current.innerHTML += `<span style="color:rgb(70, ${msg.cor2}, ${msg.cor}); margin-left: auto; text-align: right;"><i><u><b>${msg.name}</b></u></i><br> ${msg.value}</span><br>`
-            div.current.scrollTo(0,3000)
-            var audio = new Audio('/audio.mp3')
-            audio.play()
-            
-           
-        })
+    },[socket,messages])
+
+    useEffect(()=>{
+        socket.open()
+        socket.emit('join', id)
         
-    },[])
+      
+        
+    },[id, socket])
+
+
+
+
     
    
 
 
 
     return (
-    <div className="chat-funcional">
-        <button onClick={()=>{
-        Disconect()
-        
-        }}>Disc</button>
-        <button onClick={conected}>liga</button>
-        <input type="text" 
-        onChange={onChangeName} 
-        maxLength="7"
-        className="chat-name" 
-        name="name"
-        value={name}
-        placeholder="Seu nome"
-           />
-        <span style={{
-            color:'white'
-        }}>SALA 1</span>
-        <div className="chat-message">
-        
-        </div>
-        <input className="chat-input" 
-        onKeyDown={Envia}  onChange={onChangeValue} value={value} name="value" type="text" placeholder="digite a mensagem"/>
-    </div>
+    !valida?(<ChatComponent  socket={socket} users={users} messages={messages} onChangeName={onChangeName} name={name} Cont={Cont} value={value} onChangeValue={onChangeValue} Envia={Envia} />)
+    :
+    (<Users users={users}/>)
     )
+    
 }
 
 

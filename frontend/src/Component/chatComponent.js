@@ -1,14 +1,23 @@
 import React, {useEffect} from 'react'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from'react-redux';
 import { Link } from 'react-router-dom';
+
 import './chatComponent.css'
 
+
+
 function Chat (){
-    const {socket, io} = useSelector(state=>state)
     
-useEffect(()=>{
+    const {socket} = useSelector(state=>state)
+    const dispatch = useDispatch()
+
+    useEffect(()=>{
+        
     socket.emit('leave')
-},[])
+    dispatch({type:'ADD_WARNING', data:false})
+    /*eslint-disable */
+    },[socket])
+
     return (
         <>
         

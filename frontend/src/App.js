@@ -7,8 +7,8 @@ import Home from './Pages/PageHome/PageHome';
 import Store from './Component/Redux/Redux';
 
 
-
 function App() {
+  
 
 
   return (

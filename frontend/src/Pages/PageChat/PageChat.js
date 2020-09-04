@@ -1,11 +1,15 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
 import ChatFuncional from '../../Component/Chat/chatFunciona';
 
 
 
 function PageChat () {
-    return <ChatFuncional/>
+const [Aprova, setAprova] =useState(false)
+useEffect(()=>{
+    setAprova(true)
+},[])
+    return Aprova&&<ChatFuncional/>
 }
 
 export default PageChat;
