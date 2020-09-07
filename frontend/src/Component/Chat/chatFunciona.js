@@ -43,15 +43,16 @@ function Chat (){
     
     useEffect(()=>{
         socket.once('UsersLogado', msg=>setUsers(msg))
+        
         return () => {
             socket.off('UsersLogado');
           };
-    },[socket,users,messages])
+          /*eslint-disable */
+    },[users])
     
     useEffect(()=>{
         socket.once('msgChegou', msg=>setMessages([...messages, msg]))
         socket.once('EntrouSaiu', (msg)=>{
-            
            return setMessages([...messages, {...msg, enterOrExit: true}])
         }
             )
@@ -65,15 +66,14 @@ function Chat (){
         
           
 
-        
-    },[socket,messages])
+        /*eslint-disable */
+    },[messages])
 
     useEffect(()=>{
-        socket.open()
         socket.emit('join', id)
         
       
-        
+        /*eslint-disable */
     },[id, socket])
 
 

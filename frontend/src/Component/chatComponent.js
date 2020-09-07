@@ -12,11 +12,11 @@ function Chat (){
     const dispatch = useDispatch()
 
     useEffect(()=>{
-        
     socket.emit('leave')
-    dispatch({type:'ADD_WARNING', data:false})
+    dispatch({type:'ADD_WARNING', data:false, enter:false})
+    
     /*eslint-disable */
-    },[socket])
+    },[])
 
     return (
         <>

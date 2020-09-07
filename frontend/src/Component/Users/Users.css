@@ -2,27 +2,38 @@
 .users-funcional{
     width: 100%;
     margin: 0px 0px;
+    height: 100vh;
     padding-bottom: 10px;
-    background-image:url('/back.jpg');
+    background: linear-gradient(#92e7e0, #7e80d5);
+    background-size: 20%;
 }
 .users-funcional button{
-    margin: 10px 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     border:none;
+    height: 25px;
     border-radius: 4px;
-    background: linear-gradient(rgb(50, 252, 50),rgb(14, 150, 43));
+    background: rgba(0, 0, 0, 0.486);
     color: white;
+    
+}
+.button-exit-2{
+    margin-left: 10px;
+}
+.button-exit{
+    margin-left: 20px;
 }
 
 .users-message {
-    margin: 0px 10px;
     border-radius: 4px;
-    height: 500px;
     padding: 20px;
-    margin: 0 15px 20px 15px;
+    height: 70%;
+    margin: auto 20px;
     overflow-y: auto;
-    background:linear-gradient(rgb(201, 197, 197), gray);
+    background: rgba(0, 0, 0, 0.199);
     background-size: 100%;
     overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
 }
 .users-message audio{
     width: 200px;

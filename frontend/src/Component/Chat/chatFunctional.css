@@ -1,59 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 body{
     margin: 0;
+
+    
+    
 }
 .chat-funcional{
     width: 100%;
-    margin: 0px 0px;
-    padding-bottom: 10px;
-    background-image:url('/back.jpg');
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(#92e7e0, #7e80d5);
+    
 }
 .chat-funcional button{
-    margin: 5px 10px;
+
     border:none;
+    height: 25px;
     border-radius: 4px;
-    background: linear-gradient(rgb(50, 252, 50),rgb(14, 150, 43));
+    background: rgba(0, 0, 0, 0.486);
     color: white;
 }
+.button-exit-2{
+    margin-left: 10px;
+}
+.button-exit{
+    margin-left: 20px;
+}
+::-webkit-input-placeholder {
+    color: white;
+ }
+  
+ :-moz-placeholder { /* Firefox 18- */
+    color: white;  
+ }
+  
+ ::-moz-placeholder {  /* Firefox 19+ */
+    color: white;  
+ }
+  
+ :-ms-input-placeholder {  
+    color: white;  
+ }
 .chat-name {
+    background: rgba(0, 0, 0, 0.233);
     border: none;
     border-radius: 4px;
     width: 100px;
+    height: 25px;
+    color: white;
     margin: 10px 10px;
     outline: none;
     
     
 }
 .chat-message {
-    margin: 0px 10px;
     border-radius: 4px;
-    height: 450px;
     padding: 20px;
-    margin: 0 15px;
+    height: 70%;
+    margin: auto 20px;
     overflow-y: auto;
-    background: linear-gradient(rgb(209, 209, 209), white);
+    background: rgba(0, 0, 0, 0.199);
     background-size: 100%;
     overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
 }
 .chat-message audio{
     width: 200px;
 }
 
 .chat-input {
-    width: 300px;
+    color: white;
+    width: 80%;
+    font-size: 14pt;
     display: block;
+    height: 30px;
     margin: 20px auto;
     border: none;
     border-radius: 4px;
     padding: 5px;
     outline: none;
+    background: rgba(0, 0, 0, 0.233);
+
 }
 
 .div-chat-central{
     text-align: right;
     margin: 3px 3px;
+    font-size: 13pt;
 }
 .div-chat-central-2{
     margin: 2px 0px 0px 0px;
+    
 }
 .span-meu{
     text-align: left;
@@ -62,18 +99,29 @@ body{
     border-radius: 4px;
     padding: 5px 10px;
     background-color: white;
-
+    animation-name: anima;
+    animation-duration: 0.5s;
     
 }
 .span-enterExit{
     display: block;
     margin: 0px auto;
+    animation-name: anima;
+    animation-duration: 0.5s;
 
 }
+@keyframes anima {
+    from{transform: scale(1.4);}
+    to{transform: scale(1.0);}
+}
 .meu{
-    background-color: #dcf8c6;;
+    background-color: #7e80d5;
+    color: white;
+    
 }
 
 .cliente{
-    margin-top: 3px;
+    background: #92e7e0;
+    margin-top: 3px ;
+    font-size: 15pt;
 }

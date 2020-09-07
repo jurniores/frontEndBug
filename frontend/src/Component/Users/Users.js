@@ -24,8 +24,8 @@ function Users({users}) {
 
     return (
         <div className="users-funcional">
-        <button onClick={Leave}>Sair</button>
-        <button onClick={()=>{dispatch({type:'ADD_WARNING', data:false})}} >Chat</button>
+        <button className="button-exit" onClick={Leave}>Sair</button>
+        <button className="button-exit-2" onClick={()=>{dispatch({type:'ADD_WARNING', data:false})}} >Chat</button>
 
       
         <div className="users-message">

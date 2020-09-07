@@ -24,11 +24,7 @@ io.on('connection', (socket)=>{
             socket.to(room).emit('EntrouSaiu', {value:' entrou na sala', name: false})
             
             
-            socket.on('leave',()=>{
-                Diconectado({socket, room})
-                if(!logados[socket.id]) return
-                socket.leaveAll()
-            })
+            
             
         
         
@@ -39,7 +35,13 @@ io.on('connection', (socket)=>{
 
         
     })
-   
+    socket.on('leave',()=>{
+        
+        if(!logados[socket.id]) return  
+        Diconectado({socket, room:logados[socket.id].sala})
+        socket.leaveAll()
+        
+    })
     
     socket.on('enviaMsg', (msg)=>{
         if(!logados[socket.id])return
@@ -77,15 +79,15 @@ io.on('connection', (socket)=>{
 
 
 function Diconectado({socket, room}){
-    io.to(room).emit('EntrouSaiu', {value:' saiu da sala', name: logados[socket.id].name?logados[socket.id].name:false})
+     io.to(room).emit('EntrouSaiu', {value:' saiu da sala', name: logados[socket.id].name?logados[socket.id].name:false})
     for(let i in logadosChat[room]){
         if(logadosChat[room][i]===logados[socket.id].name){
              logadosChat[room].splice(i,1) 
-             
              io.to(room).emit('UsersLogado', logadosChat[room])
+             
         } 
     }
-      
+    
 }
 
 
